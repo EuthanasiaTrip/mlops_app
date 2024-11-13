@@ -1,0 +1,11 @@
+FROM python:3.9.2
+
+ENV PYTHONUNBUFFERED 1
+
+WORKDIR /usr/src/webapp
+
+RUN pip install --upgrade pip
+COPY ./requirements.txt .
+RUN pip install -r requirements.txt
+
+ADD ./mlopsserver .
