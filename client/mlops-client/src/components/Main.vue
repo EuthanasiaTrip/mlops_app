@@ -66,36 +66,10 @@
         >
           <button v-on:click="onClearInputClick" style="margin-right: 1%">
             Очистить поля
-          </button>
-          <button v-on:click="onSavePointClick" style="margin-right: 1%">
-            Добавить точку
-          </button>
-          <button
-            v-on:click="onPreviousPointClick"
-            :disabled="currentPoint == 0"
-            style="margin-right: 1%"
-          >
-            Предыдущая точка
-          </button>
-          <button
-            v-on:click="onNextPointClick"
-            :disabled="
-              this.history.length == 0 ||
-              this.currentPoint + 1 >= this.history.length
-            "
-            style="margin-right: 1%"
-          >
-            Следующая точка
-          </button>
-          <button v-on:click="onClearHistoryClick" style="margin-right: 1%">
-            Удалить точки
-          </button>
+          </button>          
           <button v-on:click="onPredictClick" style="margin-right: 1%">
             Сделать предсказание
-          </button>
-          <p>
-            {{ currentPointCaption }}
-          </p>
+          </button>          
         </div>
       </div>
     </div>
@@ -521,7 +495,7 @@ export default {
       const scope = this;
       this.isShowLoading = true;
       this.showInfoModal = false;
-      fetch("http://localhost:8000/api/evaluate", {
+      fetch("http://localhost:8101/api/evaluate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(this.getCardData()),
