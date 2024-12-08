@@ -9,4 +9,4 @@ services:
   client:
     build: ./client/mlops-client
     ports:
-    - 8201:8201
+    - 8201:8080
