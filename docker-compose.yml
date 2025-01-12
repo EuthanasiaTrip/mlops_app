@@ -6,6 +6,8 @@ services:
    command: python manage.py runserver 0.0.0.0:8101
    ports:
     - 8101:8101
+   extra-hosts:
+    - "host.docker.internal:172.17.0.1"
   client:
     build: ./client/mlops-client
     ports:
