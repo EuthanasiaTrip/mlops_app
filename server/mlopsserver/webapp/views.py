@@ -17,16 +17,12 @@ def model_evaluate(request):
     result = manager.evaluate(data['hasEmptyData'], data['data'])
     return Response(result)
 
-@api_view(['POST'])
+@api_view(['GET'])
 def model_train(request):
     manager = modelmanager.ModelManager()
-    body = request.data    
-    result = manager.train(return_report=body["withReport"])
-    if body["withReport"]:
-        from django.http import HttpResponse
-        return HttpResponse(result)
-    else:
-        return Response(result)
+    result = manager.train(return_report=True)
+    from django.http import HttpResponse
+    return HttpResponse(result)
 
 @api_view(['POST'])
 def append_data(request):
