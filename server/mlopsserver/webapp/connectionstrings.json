@@ -1,6 +1,6 @@
 {
-    "Host": "localhost",
-    "Database": "",
+    "Host": "host.docker.internal",
+    "Database": "ARH_COVID_PATIENTS_DATA_MLOPS",
     "User": "postgres",
-    "Password": ""
+    "Password": "postgres"
 }
