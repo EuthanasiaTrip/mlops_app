@@ -20,6 +20,11 @@ def model_evaluate(request):
 @api_view(['GET'])
 def model_train(request):
     manager = modelmanager.ModelManager()
+    api_key = request.GET.get("key")
+    dbCon = dbcon.DBConnector()
+    if not api_key or not dbcon.validateKey(api_key):
+        return Response('Forbidden', status=403)
+    
     result = manager.train(return_report=True)
     from django.http import HttpResponse
     return HttpResponse(result)
@@ -30,7 +35,7 @@ def append_data(request):
     body = request.data
     api_key = body["apiKey"]
     if not api_key or not dbCon.validateKey(api_key):
-        return Response('Unauthorized', status=401)
+        return Response('Forbidden', status=403)
 
     inserted_ids = []
     for row in body["data"]:
