@@ -257,7 +257,8 @@ class ModelManager():
         data = pandas.DataFrame(inputData)
 
         for col in self.cols:
-            data[col] = data[col].astype(float)
+            if col != "IsDead":
+                data[col] = data[col].astype(float)
 
         category_data = self.encode_categorical(data)
         numeric_data = self.normalize_numeric(data)
