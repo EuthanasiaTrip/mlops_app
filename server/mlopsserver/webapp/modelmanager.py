@@ -96,7 +96,7 @@ class ModelManager():
 
     def encode_categorical(self, dataframe, isPreload=True):
         for col in self.category_cols:
-            if col != 'MaxDNSeverityCategory':
+            if col != 'MaxDNSeverityCategory' and col != "IsDead":
                 dataframe[col] = dataframe[col].astype('bool')
 
         data_category_cols = dataframe[self.category_cols]
