@@ -256,9 +256,9 @@ class ModelManager():
     def evaluate(self, hasEmptyData, inputData):
         data = pandas.DataFrame(inputData)
 
+        self.cols.pop()
         for col in self.cols:
-            if col != "IsDead":
-                data[col] = data[col].astype(float)
+            data[col] = data[col].astype(float)
 
         category_data = self.encode_categorical(data)
         numeric_data = self.normalize_numeric(data)
