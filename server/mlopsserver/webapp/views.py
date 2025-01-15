@@ -22,7 +22,7 @@ def model_train(request):
     manager = modelmanager.ModelManager()
     api_key = request.GET.get("key")
     dbCon = dbcon.DBConnector()
-    if not api_key or not dbcon.validateKey(api_key):
+    if not api_key or not dbCon.validateKey(api_key):
         return Response('Forbidden', status=403)
     
     result = manager.train(return_report=True)
